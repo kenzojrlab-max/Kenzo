@@ -13,7 +13,7 @@ const DEFAULT_ADMIN: User = {
   firstName: 'Admin',
   lastName: 'System',
   email: 'admin@edc.cm',
-  password: 'admin',
+  password: 'admin12345',
   permissions: {
     canViewDashboard: true, canReadList: true, canCreate: true,
     canUpdate: true, canDelete: true, canExport: true, isAdmin: true
