@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EDC Asset Manager</title>
     
+    <!-- Google Fonts: Playfair Display (Serif Premium) & Inter (Sans-Serif Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
     <!-- CSS Variables for Theming -->
     <style>
       :root {
@@ -72,6 +77,7 @@
         background-color: var(--edc-bg);
         color: var(--edc-text);
         transition: background-color 0.3s ease, color 0.3s ease;
+        font-family: 'Inter', sans-serif;
       }
 
       /* --- COMPONENT OVERRIDES FOR DARK MODE --- */
@@ -151,6 +157,10 @@
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
             colors: {
               edc: {
                 blue: 'var(--edc-blue)', 
@@ -158,6 +168,8 @@
                 light: 'var(--edc-light)',
                 text: 'var(--edc-text)',
                 border: 'var(--edc-border)',
+                royal: '#003366', // Bleu Roi specifique
+                gold: '#F59E0B',  // Or specifique
               }
             }
           }

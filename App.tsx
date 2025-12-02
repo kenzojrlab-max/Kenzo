@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Asset, User, Log, AppConfig, Permission, Theme } from './types';
 import { INITIAL_CONFIG } from './constants';
 import Dashboard from './components/Dashboard';
 import AssetManager from './components/AssetManager';
 import AdminPanel from './components/AdminPanel';
-import { LayoutDashboard, Box, Settings, LogOut, Menu, Palette, Check, Moon, Sun, Leaf, Monitor, Briefcase, UserCircle } from 'lucide-react';
+import { LayoutDashboard, Box, Settings, LogOut, Menu, Palette, Check, Moon, Sun, Leaf, Monitor, Briefcase, UserCircle, Lock, Mail, ChevronRight } from 'lucide-react';
 
 // --- Default Admin User ---
 const DEFAULT_ADMIN: User = {
@@ -246,38 +247,65 @@ const App: React.FC = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-        <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-[95%] sm:w-full max-w-md border-t-4 border-edc-orange">
-          <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-edc-blue rounded-full flex items-center justify-center text-white font-bold text-xl md:text-2xl shadow-md">EDC</div>
-          </div>
-          <h2 className="text-xl md:text-2xl font-bold text-center text-edc-blue mb-6">Connexion Inventaire</h2>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
-              <input 
-                type="email" 
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 md:p-2 focus:ring-edc-orange focus:border-edc-orange text-base"
-                value={loginEmail}
-                onChange={e => setLoginEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Mot de passe</label>
-              <input 
-                type="password" 
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 md:p-2 focus:ring-edc-orange focus:border-edc-orange text-base"
-                value={loginPass}
-                onChange={e => setLoginPass(e.target.value)}
-              />
-            </div>
-            <button type="submit" className="w-full flex justify-center py-3 md:py-2 px-4 border border-transparent rounded-md shadow-sm text-base md:text-sm font-medium text-white bg-edc-blue hover:bg-blue-900 focus:outline-none transition-colors">
-              Se connecter
-            </button>
-            <p className="text-xs text-center text-gray-400 mt-4">Compte par défaut: admin@edc.cm / admin</p>
-          </form>
+      <div className="min-h-screen w-full flex items-center justify-center font-sans bg-[#f5f7fa]">
+        {/* CENTERED LOGIN CARD */}
+        <div className="w-full max-w-sm px-4 animate-fade-in">
+             
+             {/* COMPACT CARD - SOLID BLUE #00509e */}
+             <div className="bg-[#00509e] rounded-xl p-8 shadow-2xl relative overflow-hidden group">
+                
+                {/* Decorative Shine (Subtle) */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50"></div>
+
+                {/* TITLE ONLY */}
+                <div className="text-center mb-8">
+                    <h2 className="text-2xl font-bold text-white tracking-widest uppercase mb-1">
+                        Authentification
+                    </h2>
+                    <div className="h-1 w-12 bg-edc-gold mx-auto rounded-full"></div>
+                </div>
+
+                <form onSubmit={handleLogin} className="space-y-5">
+                   <div className="space-y-1.5">
+                      <label className="text-[10px] font-bold text-blue-200 uppercase tracking-wider flex items-center gap-2">
+                         <Mail size={12}/> Email Professionnel
+                      </label>
+                      <input 
+                         type="email" 
+                         required
+                         placeholder="nom@edc.cm"
+                         className="w-full bg-white border border-blue-400 rounded-lg px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-edc-gold transition-all"
+                         value={loginEmail}
+                         onChange={e => setLoginEmail(e.target.value)}
+                      />
+                   </div>
+
+                   <div className="space-y-1.5">
+                      <label className="text-[10px] font-bold text-blue-200 uppercase tracking-wider flex items-center gap-2">
+                         <Lock size={12}/> Mot de passe
+                      </label>
+                      <input 
+                         type="password" 
+                         required
+                         placeholder="••••••••"
+                         className="w-full bg-white border border-blue-400 rounded-lg px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-edc-gold transition-all"
+                         value={loginPass}
+                         onChange={e => setLoginPass(e.target.value)}
+                      />
+                   </div>
+
+                   <button 
+                      type="submit" 
+                      className="w-full bg-edc-gold hover:bg-yellow-500 text-[#003366] font-bold py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 mt-6"
+                   >
+                      ACCÉDER <ChevronRight size={18} strokeWidth={3}/>
+                   </button>
+                </form>
+
+                <div className="mt-6 text-center text-[10px] text-blue-200/60 font-medium pt-4 border-t border-blue-800/30">
+                   &copy; EDC Cameroun. Accès réservé.
+                </div>
+             </div>
         </div>
       </div>
     );
