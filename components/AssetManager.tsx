@@ -445,17 +445,17 @@ const AssetManager: React.FC<AssetManagerProps> = ({ assets, config, user, onSav
                     accept=".xlsx, .xls"
                  />
                  <button onClick={downloadImportTemplate} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 shadow-sm transition-colors text-xs md:text-sm">
-                    <Download size={16} /> <span className="hidden sm:inline">Modèle</span> Excel
+                    <Download size={16} /> <span><span className="hidden sm:inline">Modèle</span> Excel</span>
                  </button>
                  <button onClick={triggerImport} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 shadow-sm transition-colors text-xs md:text-sm">
-                    <Upload size={16} /> Import<span className="hidden sm:inline">er</span>
+                    <Upload size={16} /> <span>Import<span className="hidden sm:inline">er</span></span>
                  </button>
              </>
           )}
 
           {user.permissions.canExport && (
             <button onClick={exportToExcel} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700 shadow-sm transition-colors text-xs md:text-sm">
-              <FileSpreadsheet size={16} /> Export<span className="hidden sm:inline">er</span>
+              <FileSpreadsheet size={16} /> <span>Export<span className="hidden sm:inline">er</span></span>
             </button>
           )}
           {user.permissions.canCreate && (
